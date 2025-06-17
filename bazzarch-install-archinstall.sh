@@ -9,57 +9,56 @@ PASSWORD="1"
 LOCALE="en_US.UTF-8"
 KEYMAP="fi"
 TIMEZONE="Europe/Helsinki"
-DESKTOP_ENV="kde"              # KDE Plasma
+DESKTOP_ENV="kde"
 MICROCODE="amd-ucode"
 # ----------------
 
-echo "[1/3] Generating archinstall config..."
+echo "[1/3] Generating valid archinstall config..."
 cat <<EOF > config.json
 {
   "config_type": "generic",
-  "disk_config": {
+  "profile": "desktop",
+  "disks": {
     "$DISK": {
-      "wipe": true,
-      "partitions": [
-        {
+      "partitions": {
+        "EFI system partition": {
           "mountpoint": "/boot/efi",
           "size": "512M",
           "filesystem": "fat32",
           "type": "efi"
         },
-        {
+        "Linux root (x86-64)": {
           "mountpoint": "/",
           "filesystem": "btrfs"
         }
-      ],
-      "bootloader": {
-        "install": true
-      }
+      },
+      "wipe": true,
+      "bootloader": true
     }
   },
-  "filesystem": "btrfs",
   "bootloader": "grub-install",
+  "filesystem": "btrfs",
   "hostname": "$HOSTNAME",
   "locale": "$LOCALE",
-  "keyboard": "$KEYMAP",
+  "keyboard_layout": "$KEYMAP",
   "timezone": "$TIMEZONE",
   "mirror_region": "Worldwide",
   "kernel": "linux",
   "microcode": "$MICROCODE",
-  "desktop_environment": "$DESKTOP_ENV",
-  "additional_packages": [
-    "steam", "gamemode", "mangohud", "protonup-qt", "flatpak",
-    "wget", "curl", "unzip", "htop", "neofetch", "git", "vim"
-  ],
-  "network_configuration": {
-    "method": "NetworkManager"
+  "desktop": "$DESKTOP_ENV",
+  "network": {
+    "type": "NetworkManager"
   },
   "users": {
     "$USERNAME": {
       "password": "$PASSWORD",
       "superuser": true
     }
-  }
+  },
+  "additional_packages": [
+    "steam", "gamemode", "mangohud", "protonup-qt", "flatpak",
+    "wget", "curl", "unzip", "htop", "neofetch", "git", "vim"
+  ]
 }
 EOF
 
