@@ -1,45 +1,46 @@
 {
-  "config_type": "generic",
-  "profile": "desktop",
-  "disks": {
+  "version": "1.0.0",
+  "disk_config": {
     "/dev/sdb": {
       "wipe": true,
       "partitions": {
-        "EFI system partition": {
-          "mountpoint": "/boot/efi",
-          "size": "512M",
-          "filesystem": "fat32",
-          "type": "efi"
+        "1": {
+          "mountpoint": "/boot",
+          "size": "1G",
+          "filesystem": "ext4",
+          "flags": ["boot"]
         },
-        "Linux root (x86-64)": {
+        "2": {
           "mountpoint": "/",
-          "filesystem": "btrfs"
+          "filesystem": "ext4"
         }
-      },
-      "bootloader": true
+      }
     }
   },
   "bootloader": "grub-install",
-  "filesystem": "btrfs",
-  "hostname": "bazzarch",
+  "kernel": [
+    "linux",
+    "linux-zen"
+  ],
+  "microcode": "amd-ucode",
+  "timezone": "Europe/Helsinki",
   "locale": "en_US.UTF-8",
   "keyboard_layout": "fi",
-  "timezone": "Europe/Helsinki",
-  "mirror_region": "Worldwide",
-  "kernel": "linux",
-  "microcode": "amd-ucode",
-  "desktop": "kde",
-  "network": {
-    "type": "NetworkManager"
-  },
+  "hostname": "archlinux",
   "users": {
     "codo": {
       "password": "1",
-      "superuser": true 
+      "sudo": true
     }
   },
-  "additional_packages": [
-    "steam", "gamemode", "mangohud", "protonup-qt", "flatpak",
-    "wget", "curl", "unzip", "htop", "neofetch", "git", "vim"
-  ]
+  "profile": "desktop",
+  "desktop-environment": {
+    "name": "kde"
+  },
+  "display-manager": "sddm",
+  "networking": {
+    "method": "NetworkManager"
+  },
+  "additional-packages": [],
+  "audio": "pipewire"
 }
