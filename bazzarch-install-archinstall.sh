@@ -10,12 +10,13 @@ LOCALE="en_US.UTF-8"
 KEYMAP="fi"
 TIMEZONE="Europe/Helsinki"
 DESKTOP_ENV="kde"              # KDE Plasma
-MICROCODE="amd-ucode"          # or intel-ucode
+MICROCODE="amd-ucode"
 # ----------------
 
 echo "[1/3] Generating archinstall config..."
 cat <<EOF > config.json
 {
+  "config_type": "generic",
   "disk_config": {
     "$DISK": {
       "wipe": true,
