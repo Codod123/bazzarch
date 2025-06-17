@@ -41,6 +41,17 @@
   "networking": {
     "method": "NetworkManager"
   },
-  "additional-packages": [],
+  "additional-packages": [
+    "steam",
+    "gamemode",
+    "mangohud",
+    "wine",
+    "wine-staging",
+    "lutris",
+    "protontricks",
+    "nvidia",
+    "nvidia-utils",
+    "lib32-nvidia-utils"
+  ],
   "audio": "pipewire"
 }
