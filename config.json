@@ -35,7 +35,7 @@
   "users": {
     "codo": {
       "password": "1",
-      "superuser": true
+      "superuser": true 
     }
   },
   "additional_packages": [
