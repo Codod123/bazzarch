@@ -1,0 +1,45 @@
+{
+  "config_type": "generic",
+  "profile": "desktop",
+  "disks": {
+    "/dev/sdb": {
+      "wipe": true,
+      "partitions": {
+        "EFI system partition": {
+          "mountpoint": "/boot/efi",
+          "size": "512M",
+          "filesystem": "fat32",
+          "type": "efi"
+        },
+        "Linux root (x86-64)": {
+          "mountpoint": "/",
+          "filesystem": "btrfs"
+        }
+      },
+      "bootloader": true
+    }
+  },
+  "bootloader": "grub-install",
+  "filesystem": "btrfs",
+  "hostname": "bazzarch",
+  "locale": "en_US.UTF-8",
+  "keyboard_layout": "fi",
+  "timezone": "Europe/Helsinki",
+  "mirror_region": "Worldwide",
+  "kernel": "linux",
+  "microcode": "amd-ucode",
+  "desktop": "kde",
+  "network": {
+    "type": "NetworkManager"
+  },
+  "users": {
+    "codo": {
+      "password": "1",
+      "superuser": true
+    }
+  },
+  "additional_packages": [
+    "steam", "gamemode", "mangohud", "protonup-qt", "flatpak",
+    "wget", "curl", "unzip", "htop", "neofetch", "git", "vim"
+  ]
+}
